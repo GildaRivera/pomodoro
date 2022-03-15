@@ -1,4 +1,4 @@
-import { Button, Card } from "@mui/material";
+import { Button} from "@mui/material";
 import { useEffect, useState } from "react";
 
 function Timer(props) {
@@ -9,6 +9,7 @@ function Timer(props) {
 
   const tick = () => {
     if (hrs === 0 && mins === 0 && secs === 0) {
+      
     }
     //reset()
     else if (mins === 0 && secs === 0) {
@@ -20,7 +21,7 @@ function Timer(props) {
     }
   };
 
-  //const reset = () => setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)]);
+  const reset = () => setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)]);
 
   useEffect(() => {
     if (start) {
@@ -42,7 +43,10 @@ function Timer(props) {
         .toString()
         .padStart(2, "0")}`}</h1>
       <Button variant="outlined" onClick={controlTimer}>
-        Outlined
+       {!start ? "Start" : "Stop" }
+      </Button>
+      <Button variant="outlined" onClick={reset}>
+       Reset
       </Button>
     </div>
   );

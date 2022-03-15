@@ -1,7 +1,7 @@
 import { Button, Card } from "@mui/material";
 import "./App.css";
 import Timer from "./components/timer/timer";
-
+import BasicTabs from "./components/tabs/tabs";
 function App() {
   return (
     <div className="App">
@@ -9,9 +9,7 @@ function App() {
   <Timer minutes={1} seconds={0}/> */}
 
       <Card>
-        <Timer minutes={0} seconds={4} />
-        <Timer minutes={0} seconds={2} />
-        <Timer minutes={1} seconds={0} />
+        <BasicTabs></BasicTabs>
       </Card>
     </div>
   );

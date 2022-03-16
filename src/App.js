@@ -4,13 +4,12 @@ import Timer from "./components/timer/timer";
 import BasicTabs from "./components/tabs/tabs";
 function App() {
   return (
-    <div className="App">
-      {/* <Timer minutes={0} seconds={2}/>
-  <Timer minutes={1} seconds={0}/> */}
+    <div className="main">
 
-      <Card>
+      <Card className="panel">
         <BasicTabs></BasicTabs>
       </Card>
+      
     </div>
   );
 }

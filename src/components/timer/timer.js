@@ -1,15 +1,14 @@
-import { Button} from "@mui/material";
+import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
-
-function Timer(props) {
-  const [start, setStart] = useState(false);
+import './timer.css'
+export default function Timer(props) {
   const { minutes, seconds } = props;
   const hours = 0;
   const [[hrs, mins, secs], setTime] = useState([hours, minutes, seconds]);
-
+  const [start, setStart] = useState(false);
   const tick = () => {
     if (hrs === 0 && mins === 0 && secs === 0) {
-      
+      props.handleEnd(true);
     }
     //reset()
     else if (mins === 0 && secs === 0) {
@@ -21,7 +20,10 @@ function Timer(props) {
     }
   };
 
-  const reset = () => setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)]);
+  const reset = () => {
+    setStart(false);
+    setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)]);
+  };
 
   useEffect(() => {
     if (start) {
@@ -38,18 +40,17 @@ function Timer(props) {
     }
   };
   return (
-    <div className="App">
-      <h1>{`${mins.toString().padStart(2, "0")}:${secs
+    <div className="timer">
+      <h1 className="timer__timeCount">{`${mins.toString().padStart(2, "0")}:${secs
         .toString()
         .padStart(2, "0")}`}</h1>
+        <div className="timer__buttons">
       <Button variant="outlined" onClick={controlTimer}>
-       {!start ? "Start" : "Stop" }
+        {!start ? "Start" : "Stop"}
       </Button>
       <Button variant="outlined" onClick={reset}>
-       Reset
-      </Button>
+        Reset
+      </Button></div>
     </div>
   );
 }
-
-export default Timer;

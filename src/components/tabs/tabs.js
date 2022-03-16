@@ -28,6 +28,7 @@ export default function BasicTabs(props) {
           onChange={handleChange}
           variant="fullWidth"
           sx={{
+            backgroundColor: '#062636',
             "& .MuiTabs-indicator": {
               display: "flex",
               justifyContent: "center",
@@ -45,8 +46,8 @@ export default function BasicTabs(props) {
             sx={{
               color: "#2abab4",
               "&.Mui-selected": {
-                color: "#2abab4",
-                backgroundColor:'#2abab41c'
+                color: "#4CF5F5",
+                backgroundColor:'#4cf5f533'
               },
             }}
           />
@@ -55,7 +56,8 @@ export default function BasicTabs(props) {
             sx={{
               color: "#2abab4",
               "&.Mui-selected": {
-                color: "#2abab4",
+                color: "#4CF5F5",
+                backgroundColor:'#4cf5f533'
               },
             }}
           />
@@ -64,7 +66,8 @@ export default function BasicTabs(props) {
             sx={{
               color: "#2abab4",
               "&.Mui-selected": {
-                color: "#2abab4",
+                color: "#4CF5F5",
+                backgroundColor:'#4cf5f533'
               },
             }}
           />

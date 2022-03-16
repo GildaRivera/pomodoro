@@ -51,7 +51,6 @@ export default function Timer(props) {
           sx={{
             color: "#2abab4",
             borderColor: "#2abab4",
-            width:'10%',
             "&:hover": {
               color: "red",
             },
@@ -62,7 +61,7 @@ export default function Timer(props) {
         <Button
           variant="outlined"
           onClick={reset}
-          sx={{ color: "#2abab4", borderColor: "#2abab4", width:'10%' }}
+          sx={{ color: "#2abab4", borderColor: "#2abab4" }}
         >
           Reset
         </Button>

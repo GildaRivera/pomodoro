@@ -1,7 +1,7 @@
 .timer__timeCount{
-    font-size: 80px;
+    font-size: 90px;
     text-align: center;
-    color:#2abab4;
+    color:#4CF5F5
 }
 .timer__buttons{
     display: flex;
@@ -9,5 +9,5 @@
 }
 .timer{
     position: relative;
-    top:10vh;
+    top:15vh;
 }

@@ -1,8 +1,13 @@
 .timer__timeCount{
     font-size: 80px;
     text-align: center;
+    color:#2abab4;
 }
 .timer__buttons{
     display: flex;
     justify-content: space-around;
+}
+.timer{
+    position: relative;
+    top:10vh;
 }

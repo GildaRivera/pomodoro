@@ -22,14 +22,55 @@ export default function BasicTabs(props) {
   };
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}  >
-        <Tabs value={value} onChange={handleChange} variant="fullWidth" >
-          <Tab label="Pomodoro"/>
-          <Tab label="Short break" />
-          <Tab label="Long break" />
+      <Box>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          variant="fullWidth"
+          sx={{
+            "& .MuiTabs-indicator": {
+              display: "flex",
+              justifyContent: "center",
+              backgroundColor: "#2abab4",
+            },
+            "& .MuiTabs-indicatorSpan": {
+              maxWidth: 40,
+              width: "100%",
+              backgroundColor: "#2abab4",
+            },
+          }}
+        >
+          <Tab
+            label="Pomodoro"
+            sx={{
+              color: "#2abab4",
+              "&.Mui-selected": {
+                color: "#2abab4",
+                backgroundColor:'#2abab41c'
+              },
+            }}
+          />
+          <Tab
+            label="Short break"
+            sx={{
+              color: "#2abab4",
+              "&.Mui-selected": {
+                color: "#2abab4",
+              },
+            }}
+          />
+          <Tab
+            label="Long break"
+            sx={{
+              color: "#2abab4",
+              "&.Mui-selected": {
+                color: "#2abab4",
+              },
+            }}
+          />
         </Tabs>
       </Box>
-      
+
       <TabPanel value={value} index={0}>
         <Timer minutes={0} seconds={4} handleEnd={handleEnd} />
       </TabPanel>
@@ -39,8 +80,6 @@ export default function BasicTabs(props) {
       <TabPanel value={value} index={2}>
         <Timer minutes={1} seconds={0} />
       </TabPanel>
-
-
 
       {state ? (
         <Alert variant="outlined" severity="success">

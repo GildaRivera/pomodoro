@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="main">
 
-      <Card className="panel">
+      <Card className="panel" sx={{backgroundColor:'#fff0', boxShadow:'none'}}>
         <BasicTabs></BasicTabs>
       </Card>
       

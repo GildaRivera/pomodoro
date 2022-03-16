@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import './timer.css'
+import "./timer.css";
 export default function Timer(props) {
   const { minutes, seconds } = props;
   const hours = 0;
@@ -41,16 +41,32 @@ export default function Timer(props) {
   };
   return (
     <div className="timer">
-      <h1 className="timer__timeCount">{`${mins.toString().padStart(2, "0")}:${secs
+      <h1 className="timer__timeCount">{`${mins
         .toString()
-        .padStart(2, "0")}`}</h1>
-        <div className="timer__buttons">
-      <Button variant="outlined" onClick={controlTimer}>
-        {!start ? "Start" : "Stop"}
-      </Button>
-      <Button variant="outlined" onClick={reset}>
-        Reset
-      </Button></div>
+        .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`}</h1>
+      <div className="timer__buttons">
+        <Button
+          variant="outlined"
+          onClick={controlTimer}
+          sx={{
+            color: "#2abab4",
+            borderColor: "#2abab4",
+            width:'10%',
+            "&:hover": {
+              color: "red",
+            },
+          }}
+        >
+          {!start ? "Start" : "Stop"}
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={reset}
+          sx={{ color: "#2abab4", borderColor: "#2abab4", width:'10%' }}
+        >
+          Reset
+        </Button>
+      </div>
     </div>
   );
 }

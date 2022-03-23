@@ -1,6 +1,5 @@
-import { Button, Card } from "@mui/material";
+import {  Card } from "@mui/material";
 import "./App.css";
-import Timer from "./components/timer/timer";
 import BasicTabs from "./components/tabs/tabs";
 function App() {
   window.localStorage.setItem("session",JSON.stringify([]))

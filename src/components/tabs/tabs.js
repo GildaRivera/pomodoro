@@ -1,25 +1,49 @@
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Timer from "../timer/timer";
-import { Alert } from "@mui/material";
 import { useState } from "react";
 import TabPanel from "../panel/tabpanel";
+import useSound from 'use-sound';
+import sound from '../../assets/notification.mp3'
 export default function BasicTabs(props) {
   const [value, setValue] = useState(0);
-
+  const [play] = useSound(sound);
   const handleChange = (event, newValue) => {
+  
+
+   
+   
     setValue(newValue);
   };
   let [state, setState] = useState(false);
-  const handleEnd = (finished) => {
+  const handleEnd = (finished,type) => {
     if (finished) {
+      let session = JSON.parse(window.localStorage.getItem("session"));
+      let t= session.length+1
+      switch(type){
+        case 25:
+        session.push({[t]:25})
+        break
+        case 5:
+          session.push({[t]:5})
+          break
+        case 15:
+          session.push({[t]:15})
+          break
+        default:
+          break;
+      }
+      window.localStorage.clear()
+      window.localStorage.setItem("session",JSON.stringify(session))
       setState(finished);
-      setTimeout(() => setState(false), 5000);
+      play()
     }
   };
+  const handleRestart =()=>{
+    setState(false)
+  }
   return (
     <Box sx={{ width: "100%" }}>
       <Box>
@@ -75,22 +99,16 @@ export default function BasicTabs(props) {
       </Box>
 
       <TabPanel value={value} index={0}>
-        <Timer minutes={0} seconds={4} handleEnd={handleEnd} />
+        <Timer minutes={25} seconds={0} handleEnd={handleEnd} handleRestart={handleRestart} finished={state}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Timer minutes={0} seconds={2} />
+        <Timer minutes={5} seconds={0} handleEnd={handleEnd} handleRestart={handleRestart} finished={state} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Timer minutes={1} seconds={0} />
+        <Timer minutes={15} seconds={0} handleEnd={handleEnd} handleRestart={handleRestart} finished={state} />
       </TabPanel>
 
-      {state ? (
-        <Alert variant="outlined" severity="success">
-          This is a success alert — check it out!
-        </Alert>
-      ) : (
-        ""
-      )}
+     
     </Box>
   );
 }

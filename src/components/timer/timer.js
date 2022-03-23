@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import "./timer.css";
+
 export default function Timer(props) {
   const { minutes, seconds } = props;
   const hours = 0;
@@ -8,7 +9,7 @@ export default function Timer(props) {
   const [start, setStart] = useState(false);
   const tick = () => {
     if (hrs === 0 && mins === 0 && secs === 0) {
-      props.handleEnd(true);
+      props.handleEnd(true, props.minutes);
     }
     //reset()
     else if (mins === 0 && secs === 0) {
@@ -23,6 +24,7 @@ export default function Timer(props) {
   const reset = () => {
     setStart(false);
     setTime([parseInt(hours), parseInt(minutes), parseInt(seconds)]);
+    props.handleRestart()
   };
 
   useEffect(() => {
@@ -48,20 +50,29 @@ export default function Timer(props) {
         <Button
           variant="outlined"
           onClick={controlTimer}
+          disabled={props.finished ? true : false}
           sx={{
             color: "#2abab4",
             borderColor: "#2abab4",
             "&:hover": {
-              color: "red",
+              color: "#062636",
+              backgroundColor: "#4CF5F5",
             },
           }}
         >
-          {!start ? "Start" : "Stop"}
+          {!start || props.finished ? "Start" : "Stop"}
         </Button>
         <Button
           variant="outlined"
           onClick={reset}
-          sx={{ color: "#2abab4", borderColor: "#2abab4" }}
+          sx={{
+            color: "#2abab4",
+            borderColor: "#2abab4",
+            "&:hover": {
+              color: "#062636",
+              backgroundColor: "#4CF5F5",
+            },
+          }}
         >
           Reset
         </Button>
